@@ -14,7 +14,7 @@ from sqlalchemy import MetaData
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'VAR1')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 ckeditor = CKEditor(app)
 Bootstrap(app)
