@@ -87,8 +87,8 @@ class Comment(db.Model):
 
 
 # db.drop_all()
-db.create_all()
-db.session.commit()
+# db.create_all()
+# db.session.commit()
 
 
 # Create specific-user--only decorator
