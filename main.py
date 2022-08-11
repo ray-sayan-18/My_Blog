@@ -180,7 +180,7 @@ def show_post(post_id):
     if form.validate_on_submit():
         comment = form.comment.data
         if current_user.is_anonymous:
-            new_comment = Comment(comment=comment, post=requested_post, account_user_id=0)
+            new_comment = Comment(comment=comment, post=requested_post, account_user_id=-1)
         else:
             new_comment = Comment(comment=comment, account_user=current_user, post=requested_post)
         db.session.add(new_comment)
