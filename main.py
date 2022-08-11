@@ -14,10 +14,8 @@ from sqlalchemy import MetaData
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('VAR1')
-# Just to try out pushing commits in GitHub
-a = 1
-b = 2
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'VAR1')
+
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app,
@@ -30,7 +28,7 @@ gravatar = Gravatar(app,
                     base_url=None)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 convention = {
