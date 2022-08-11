@@ -16,6 +16,7 @@ import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('VAR1')
 # Just to try out pushing commits in GitHub
+a = 1
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app,
