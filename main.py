@@ -86,9 +86,9 @@ class Comment(db.Model):
     account_user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
 
-# db.drop_all()
-# db.create_all()
-# db.session.commit()
+db.drop_all()
+db.create_all()
+db.session.commit()
 
 
 # Create specific-user--only decorator
