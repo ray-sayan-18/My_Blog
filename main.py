@@ -180,9 +180,11 @@ def show_post(post_id):
     if form.validate_on_submit():
         comment = form.comment.data
         if current_user.is_anonymous:
-            new_comment = Comment(comment=comment, post=requested_post, account_user_id=0)
+            new_comment = Comment(comment=comment, post=requested_post, account_user_id=3)
         else:
             new_comment = Comment(comment=comment, account_user=current_user, post=requested_post)
+            if new_comment.account_user_id >= 3:
+                new_comment.account_user_id += 1
         db.session.add(new_comment)
         db.session.commit()
         return redirect(url_for('show_post', post=requested_post, form=form, all_comments=comments, post_id=post_id))
