@@ -51,7 +51,7 @@ migrate.init_app(app, db, render_as_batch=True)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-db.create_all()
+
 ##CONFIGURE TABLES
 
 class BlogPost(db.Model):
@@ -87,8 +87,8 @@ class Comment(db.Model):
 
 
 # db.drop_all()
-# db.create_all()
-# db.session.commit()
+db.create_all()
+db.session.commit()
 
 
 # Create specific-user--only decorator
