@@ -86,9 +86,9 @@ class Comment(db.Model):
     account_user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
 
-# db.drop_all()
-# db.create_all()
-# db.session.commit()
+db.drop_all()
+db.create_all()
+db.session.commit()
 
 
 # Create specific-user--only decorator
@@ -180,11 +180,9 @@ def show_post(post_id):
     if form.validate_on_submit():
         comment = form.comment.data
         if current_user.is_anonymous:
-            new_comment = Comment(comment=comment, post=requested_post, account_user_id=4)
+            new_comment = Comment(comment=comment, post=requested_post, account_user_id=2)
         else:
             new_comment = Comment(comment=comment, account_user=current_user, post=requested_post)
-            if new_comment.account_user.id >= 4:
-                new_comment.account_user.id += 1
         db.session.add(new_comment)
         db.session.commit()
         return redirect(url_for('show_post', post=requested_post, form=form, all_comments=comments, post_id=post_id))

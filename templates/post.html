@@ -45,7 +45,7 @@
                         {% for comment in all_comments %}
                         {% if comment.post.id == post.id %}
                         <li>
-                            {% if comment.account_user.is_authenticated : %}
+                            {% if comment.account_user.is_authenticated and comment.account_user.id !=2: %}
                                 <div class="commenterImage">
                                     <img src="{{ comment.account_user.email | gravatar }}"/>
                                 </div>
